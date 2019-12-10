@@ -405,7 +405,7 @@ display: none;
 	
 	
 	
-	/*================SELECTIA UNEI PIESE==============*/
+	/*================Selection of play==============*/
 	the_checker = w_checker;
 	
 	function showMoves (piece) {
@@ -420,7 +420,7 @@ display: none;
 				erase_roads(selectedPiece);
 		}
 		selectedPiece = piece;
-		var i,j; // retine indicele damei
+		var i,j; // Retain the index.
 		for ( j = 1; j <= 12; j++){
 			if(the_checker[j].id == piece){
 				i = j;
@@ -439,10 +439,10 @@ display: none;
 		}
 	
 		if(!match) {
-		 return 0 ; // daca nu a fost gasit nicio potrivire ; se intampla cand de exemplu rosu muta iar tu apasi pe negru
+		 return 0 ; // If match was not found red moves and then you press black
 		}
 	
-		/*===acum in functie de culoarea lor setez marginile si miscarile damei===*/
+		/*==Depending on the color edges and movements have been set====*/
 		if(the_checker[i].color =="white"){
 			tableLimit = 8;
 			tableLimitRight = 1;
@@ -504,7 +504,7 @@ display: none;
 			return false;
 		}
 	
-	 /* =========perspectiva e a jucatorului care muta ======*/
+	 /* =========the prospect of the player moving ======*/
 		if(the_checker[1].color=="white"){
 			cpy_downRight = upRight;
 			cpy_downLeft = upLeft;
@@ -518,16 +518,21 @@ display: none;
 			cpy_upRight = downLeft;
 		}  
 	
-		if(mustAttack)  // ca sa stiu daca sar doar un rand sau 2 
+		if(mustAttack)  // Knowing if you could skip a row or two.
 			multiplier = 2;
 		else
 			multiplier = 1;
 			if(index == cpy_upRight){
 				isMove = true;		
 				if(the_checker[1].color=="white"){
-					// muta piesa
+					//mute pieces
 					executeMove( multiplier * 1, multiplier * 1, multiplier * 9 );
-					//elimina piesa daca a fost executata o saritura
+					// Remove a piece of it has been executed
+
+
+
+
+
 					if(mustAttack) eliminateCheck(index - 9);
 				}
 				else{
@@ -601,13 +606,13 @@ display: none;
 		}
 	}
 	
-	/*===========MUTAREA PIESEI-SCHIMBAREA COORDONATELOR======*/
+	/*========Free the field that occupies the piece and occupy the one that will occupy it=========*/
 	
 	function executeMove (X,Y,nSquare){
 		// schimb coordonate piesei mutate
 		the_checker[selectedPieceindex].changeCoord(X,Y); 
 		the_checker[selectedPieceindex].setCoord(0,0);
-		// eliberez campul pe care il ocupa piesa si il ocup pe cel pe care il va ocupa
+		// Change coordinates to the moved pieces
 		block[the_checker[selectedPieceindex].ocupied_square].ocupied = false;			
 		//alert (the_checker[selectedPieceindex].ocupied_square);
 		block[the_checker[selectedPieceindex].ocupied_square + nSquare].ocupied = true;
@@ -954,7 +959,7 @@ display: none;
 
 
 
-
+ 
 
 
 
