@@ -75,6 +75,7 @@
 	<div class="square black_square"> </div>
 	<div class="square white_square"> </div>
 	<div class="square black_square"> </div>
+	
 	<div class="square white_square"> </div>
 	<div class="square black_square"> </div>
 	<div class="square white_square"> </div>
@@ -292,7 +293,7 @@ display: none;
 			moveDeviation = 6;
 		}
 	
-	/*================declararea claselor=========*/
+	
 	
 	var square_p = function(square,index){
 		this.id = square;
@@ -346,7 +347,7 @@ display: none;
 		}
 	}
 	
-	/*===============Initializarea campurilor de joc =================================*/
+	
 	
 	
 	for (var i = 1; i <=64; i++)
@@ -355,9 +356,9 @@ display: none;
 	/*==================================================*/
 	
 	
-	/*================initializarea damelor =================================*/
 	
-		// damele albe 
+	
+		
 	for (var i = 1; i <= 4; i++){
 		w_checker[i] = new checker(white_checker_class[i], "white", 2*i -1 );
 		w_checker[i].setCoord(0,0);
@@ -379,7 +380,7 @@ display: none;
 		block[2*i - 1].pieceId = w_checker[i];
 	}
 	
-	//damele negre
+	
 	for (var i = 1; i <= 4; i++){
 		b_checker[i] = new checker(black_checker_class[i], "black", 56 + 2*i  );
 		b_checker[i].setCoord(0,0);
@@ -401,11 +402,11 @@ display: none;
 		block[24 + 2*i ].pieceId = b_checker[i];
 	}
 	
-	/*========================================================*/
+
 	
 	
 	
-	/*================Selection of play==============*/
+	/*================play functions==============*/
 	the_checker = w_checker;
 	
 	function showMoves (piece) {
@@ -461,13 +462,12 @@ display: none;
 			moveDownRight = 9;
 			moveDownLeft = 7;
 		}
-		 /*===========VERIFIC DACA POT ATACA====*/
 	
 	
-			attackMoves(the_checker[i]); // verifica daca am vreo miscare de atac
+	
+			attackMoves(the_checker[i]); 
 		
-	
-		/*========DACA NU POT ATACA VERIFIC DACA POT MERGE======*/
+
 	
 		 if(!mustAttack){
 		   downLeft = checkMove( the_checker[i] , tableLimit , tableLimitRight , moveUpRight , downLeft);
@@ -492,11 +492,11 @@ display: none;
 		if(upLeft) block[upLeft].id.style.background = "#BA7A3A";
 	}
 			
-	/*=============MUTAREA PIESEI======*/
+
 	
 	function makeMove (index) {
 		var isMove = false;
-		if(!selectedPiece) // daca jocu de abea a inceput si nu a fost selectata nicio piesa
+		if(!selectedPiece) 
 			return false;
 		if(index != upLeft && index != upRight && index != downLeft && index != downRight){
 			erase_roads(0);
@@ -584,7 +584,7 @@ display: none;
 		erase_roads(0);
 		the_checker[selectedPieceindex].checkIfKing();
 	
-		// schimb randul
+	
 		if (isMove) {
 				playSound(moveSound);
 				anotherMove = undefined;
@@ -609,12 +609,12 @@ display: none;
 	/*========Free the field that occupies the piece and occupy the one that will occupy it=========*/
 	
 	function executeMove (X,Y,nSquare){
-		// schimb coordonate piesei mutate
+	
 		the_checker[selectedPieceindex].changeCoord(X,Y); 
 		the_checker[selectedPieceindex].setCoord(0,0);
 		// Change coordinates to the moved pieces
 		block[the_checker[selectedPieceindex].ocupied_square].ocupied = false;			
-		//alert (the_checker[selectedPieceindex].ocupied_square);
+		alert (the_checker[selectedPieceindex].ocupied_square);
 		block[the_checker[selectedPieceindex].ocupied_square + nSquare].ocupied = true;
 		block[the_checker[selectedPieceindex].ocupied_square + nSquare].pieceId = 	block[the_checker[selectedPieceindex].ocupied_square ].pieceId;
 		block[the_checker[selectedPieceindex].ocupied_square ].pieceId = undefined; 	
