@@ -298,7 +298,7 @@ display: none;
             moveDeviation = 6;
         }
     
-    /*================declararea claselor=========*/
+   
     
     var square_p = function(square,index){
         this.id = square;
@@ -352,7 +352,7 @@ display: none;
         }
     }
     
-    /*===============Initializarea campurilor de joc =================================*/
+    
     
     
     for (var i = 1; i <=64; i++)
@@ -361,7 +361,7 @@ display: none;
     /*==================================================*/
     
     
-    /*================initializarea damelor =================================*/
+    
     
         // damele albe 
     for (var i = 1; i <= 4; i++){
@@ -415,10 +415,6 @@ display: none;
     the_checker = w_checker;
     
     function showMoves (piece) {
-        /* daca a fost selectat inainte o piesa stergem drumurile ei actualizand nu drumurile  Game made by Cojocaru Calin George all rights reserved piesei noi s
-        electat
-      
-        */
         
         var match = false;
         mustAttack = false;
@@ -467,13 +463,12 @@ display: none;
             moveDownRight = 9;
             moveDownLeft = 7;
         }
-         /*===========VERIFIC DACA POT ATACA====*/
+         
     
     
-            attackMoves(the_checker[i]); // verifica daca am vreo miscare de atac
+            attackMoves(the_checker[i]); 
+    
         
-    
-        /*========DACA NU POT ATACA VERIFIC DACA POT MERGE======*/
     
          if(!mustAttack){
            downLeft = checkMove( the_checker[i] , tableLimit , tableLimitRight , moveUpRight , downLeft);
@@ -498,11 +493,10 @@ display: none;
         if(upLeft) block[upLeft].id.style.background = "#BA7A3A";
     }
             
-    /*=============MUTAREA PIESEI======*/
     
     function makeMove (index) {
         var isMove = false;
-        if(!selectedPiece) // daca jocu de abea a inceput si nu a fost selectata nicio piesa
+        if(!selectedPiece)
             return false;
         if(index != upLeft && index != upRight && index != downLeft && index != downRight){
             erase_roads(0);
